@@ -1,80 +1,38 @@
-package video-store;
-
-import java.io.*;
-import java.text.*;
+package assignment2;
 
 /**
  * @author Andrew Rohn
  * @author Annie Yang
- * Represents a movie contained in the Video Store's Inventory
- * Movie is Serializable
- * 
+ * Represents a Movie Product contained in the Video Store's Inventory
  */
-public class Movie extends Product implements Serializable {
-    private int sku;
-    private String title;
-    private int quantity;
-    private float price;
 
-    public Movie(int sku, int quantity, float price, String title) {
+public class Movie extends Product {
+
+    private int upc;
+    public final String CATEGORY = "Movie";
+
+    public Movie(int sku, int quantity, float price, String title, int upc){
         this.sku = sku;
         this.quantity = quantity;
         this.price = price;
         this.title = title;
-    }
-
-    public int getSku() {
-        return sku;
-    }
-
-    public void setSku(int sku) {
-        this.sku = sku;
-    }
-
-   public int getQuantity() {
-        return quantity;
+        this.upc = upc;
     }
     
     /**
-     * Searches for the SKU and displays the movie 
-     * @param void
-     * @return void
+     * Displays all attributes of product
     */
-    public void displayMovie() {
-        DecimalFormat priceForm = new DecimalFormat ("$#0.00");
-        System.out.println();
-        System.out.println("Sku: " + this.sku);
-        System.out.println("Title: " + this.title);
-        System.out.println("Quantity: " + this.quantity);
-        System.out.println("Price: " + priceForm.format(this.price));
+    public void displayAllAttributes() {
+        super.displayAllAttributes();
+        System.out.println("UPC: " + upc);
     }
+
     /**
-    * displays the movie line by line
-    * @param n.a.
-    * @return n.a.
+    * Displays the product in one neatly formatted line.
     */
     public void displayLine() {
-        DecimalFormat priceForm = new DecimalFormat ("$#0.00");    
-        System.out.printf("%-10s", this.sku);
-        System.out.printf("%-8s", this.quantity);
-        System.out.printf("%-10s", priceForm.format(this.price));
-        System.out.printf("%-20s", this.title);
+        super.displayLine();
+        System.out.printf("%-10s", CATEGORY);
         System.out.println();
-    }
-    /**
-    * increases quanity of movie
-    * @param n.a.
-    * @return n.a.
-    */
-    public void increaseQuantityBy(int n) {
-        quantity += n;
-    }
-    /**
-    * decreases quanity of movie
-    * @param n.a.
-    * @return n.a.
-    */
-    public void removeMovie() {
-        quantity--;
     }
 }

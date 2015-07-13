@@ -1,4 +1,4 @@
-package video-store;
+package assignment2;
 
 import java.util.*;
 import java.io.*;
@@ -52,7 +52,6 @@ public class VideoStore {
         * Writes the Serialized Inventory to output file
         * @throws file output problem
         */
-        //Serialize to output
         try {
             FileOutputStream fos = new FileOutputStream("inventoryFile");
             ObjectOutputStream oos = new ObjectOutputStream(fos);
