@@ -10,12 +10,12 @@ import java.text.*;
  * Product is an abstract class.
  */
 
-abstract public class Product implements Comparable<Product> {
+abstract public class Product implements Comparable<Product>, Serializable {
 
     protected int sku;
     protected String title;
     protected int quantity;
-    protected float price; 
+    protected float price;
 
     public int getSku() {
         return sku;
@@ -88,5 +88,24 @@ abstract public class Product implements Comparable<Product> {
     public int compareTo(Product product) {
         return sku - product.getSku();
     }
+
+    public void processAndDisplaySale(int numSold, 
+                                                float shippingCost) {
+        float totalPrice = price * numSold;
+        float totalShippingCredit = perItemShippingCredit() * numSold;
+        float totalCommission = getCommissionRate() * totalPrice;
+        float totalProfit = (totalPrice + totalShippingCredit)
+                            - (totalCommission + shippingCost);
+
+        System.out.println("Total price: " + totalPrice);
+        System.out.println("Total shipping credit: " + totalShippingCredit);
+        System.out.println("Total commission: " + totalCommission);
+        System.out.println("Total profit: " + totalProfit);
+
+    }
+        
+    abstract public float perItemShippingCredit();
+    
+    abstract public float getCommissionRate();
 }
 

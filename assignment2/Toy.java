@@ -9,7 +9,8 @@ package assignment2;
 public class Toy extends Product {
 
     private float weight;
-    public final String CATEGORY = "Toy";
+    public static final String CATEGORY = "Toy";
+    public static final float COMMISSION_RATE = .15f;
 
     public Toy(int sku, int quantity, float price, String title, 
                 float weight){
@@ -35,5 +36,14 @@ public class Toy extends Product {
         super.displayLine();
         System.out.printf("%-10s", CATEGORY);
         System.out.println();
+    }
+
+    public float perItemShippingCredit() {
+        float pounds = (float)Math.ceil(weight / 16);
+        return .5f * pounds + 4.49f;
+    }
+
+    public float getCommissionRate() {
+        return COMMISSION_RATE;
     }
 }

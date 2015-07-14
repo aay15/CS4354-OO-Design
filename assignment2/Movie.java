@@ -10,6 +10,7 @@ public class Movie extends Product {
 
     private int upc;
     public final String CATEGORY = "Movie";
+    public static final float COMMISSION_RATE = .12f;
 
     public Movie(int sku, int quantity, float price, String title, int upc){
         this.sku = sku;
@@ -35,4 +36,8 @@ public class Movie extends Product {
         System.out.printf("%-10s", CATEGORY);
         System.out.println();
     }
+
+    public float getCommissionRate() { return COMMISSION_RATE; }
+
+    public float perItemShippingCredit() { return 2.98f; }
 }

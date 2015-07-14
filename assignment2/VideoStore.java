@@ -14,15 +14,10 @@ public class VideoStore {
     
     static Scanner sc = new Scanner(System.in);
     
-    /**
-    * The inventory object
-    */
     private Inventory storeInventory = new Inventory();
 
     public static void main(String[] args) {
-        /**
-        * The VideoStore object
-        */
+        
         VideoStore store = new VideoStore();
 
         /**
@@ -114,9 +109,9 @@ public class VideoStore {
                 break;
         }
     }
+
     /**
-    * Reads in Movie information and creates movie object, returns movie object
-    * @param n.a.
+    * Reads in Movie information and creates movie object
     * @return the Movie object created
     */
     private Movie createNewMovie() { 
@@ -138,9 +133,9 @@ public class VideoStore {
 
         return movie;
     }
+
     /**
     * gets SKU from command line and returns SKU
-    * @param n.a.
     * @return int SKU
     */
     private int requestSku() {
@@ -149,3 +144,4 @@ public class VideoStore {
     }
 
 }
+
