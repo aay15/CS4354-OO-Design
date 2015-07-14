@@ -10,12 +10,12 @@ import java.text.*;
  * Product is an abstract class.
  */
 
-abstract public class Product implements Comparable<Product> {
+abstract public class Product implements Comparable<Product> implements Serializable {
 
     protected int sku;
     protected String title;
     protected int quantity;
-    protected float price; 
+    protected float price;
 
     public int getSku() {
         return sku;
@@ -24,11 +24,11 @@ abstract public class Product implements Comparable<Product> {
     public void setSku(int sku) {
         this.sku = sku;
     }
-    
+
     public int getQuantity() {
         return quantity;
     }
-    
+
     /**
      * Displays all attributes of product
     */
@@ -61,7 +61,7 @@ abstract public class Product implements Comparable<Product> {
     }
 
     /**
-    * Decrease product quantity by variable amount. 
+    * Decrease product quantity by variable amount.
     * Checks if sufficient amount of product in inventory.
     * @param n The number to decrease quantity by.
     * @return True if decrease succeeded. Fail otherwise.
@@ -79,7 +79,7 @@ abstract public class Product implements Comparable<Product> {
         }
 
     }
-    
+
     /**
     * Redefine Comparable interace compareTo(T o) method.
     * @param Product The object to be compared.
@@ -89,4 +89,3 @@ abstract public class Product implements Comparable<Product> {
         return sku - product.getSku();
     }
 }
-
