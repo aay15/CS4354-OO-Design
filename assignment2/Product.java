@@ -9,7 +9,6 @@ import java.text.*;
  * Represents a Product contained in the Video Store's Inventory
  * Product is an abstract class.
  */
-
 abstract public class Product implements Comparable<Product>, Serializable {
 
     protected int sku;
@@ -17,20 +16,22 @@ abstract public class Product implements Comparable<Product>, Serializable {
     protected int quantity;
     protected float price;
 
-    public int getSku() {
-        return sku;
-    }
-
-    public void setSku(int sku) {
-        this.sku = sku;
-    }
-    
-    public int getQuantity() {
-        return quantity;
-    }
+    /**
+    * Calculate the shipping credit for sale. Abstract function unique
+    * to each Product subclass. Called from processAndDisplaySale()
+    * @return float The shipping credit for products sold.
+    */
+    abstract public float perItemShippingCredit(); 
     
     /**
-     * Displays all attributes of product
+    * Calculate the commission for sale. Abstract function unique
+    * to each Product subclass. Called from processAndDisplaySale()
+    * @return float The commission rate per product sold.
+    */
+    abstract public float getCommissionRate();
+
+    /**
+    * Displays all attributes of product
     */
     public void displayAllAttributes() {
         DecimalFormat priceForm = new DecimalFormat ("$#0.00");
@@ -83,12 +84,18 @@ abstract public class Product implements Comparable<Product>, Serializable {
     /**
     * Redefine Comparable interace compareTo(T o) method.
     * @param Product The object to be compared.
-    * @return Result of comparison.
+    * @return int Result of comparison.
     */
     public int compareTo(Product product) {
         return sku - product.getSku();
     }
 
+    /**
+    * Proces and display Total price, Total shipping credit, Total
+    * commission, Total profit.
+    * @param numSold The number of product sold.
+    * @param shippingCost The cost to ship the sold products.
+    */
     public void processAndDisplaySale(int numSold, 
                                                 float shippingCost) {
         float totalPrice = price * numSold;
@@ -101,11 +108,18 @@ abstract public class Product implements Comparable<Product>, Serializable {
         System.out.println("Total shipping credit: " + totalShippingCredit);
         System.out.println("Total commission: " + totalCommission);
         System.out.println("Total profit: " + totalProfit);
-
     }
         
-    abstract public float perItemShippingCredit();
+    public int getSku() {
+        return sku;
+    }
+
+    public void setSku(int sku) {
+        this.sku = sku;
+    }
     
-    abstract public float getCommissionRate();
+    public int getQuantity() {
+        return quantity;
+    }  
 }
 

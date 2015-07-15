@@ -1,5 +1,10 @@
 package assignment2;
 
+/**
+ * @author Andrew Rohn
+ * @author Annie Yang
+ * Represents a Book contained in the Video Store's Inventory
+ */
 public class Book extends Product {
 
     private int isbn;

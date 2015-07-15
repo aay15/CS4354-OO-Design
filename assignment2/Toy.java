@@ -5,7 +5,6 @@ package assignment2;
  * @author Annie Yang
  * Represents a Toy Product contained in the Video Store's Inventory
  */
-
 public class Toy extends Product {
 
     private float weight;

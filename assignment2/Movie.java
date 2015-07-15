@@ -5,7 +5,6 @@ package assignment2;
  * @author Annie Yang
  * Represents a Movie Product contained in the Video Store's Inventory
  */
-
 public class Movie extends Product {
 
     private int upc;
