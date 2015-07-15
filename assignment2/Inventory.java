@@ -8,71 +8,66 @@ import java.util.ArrayList;
  * Represents a VideoStore Inventory
  * Contains a movieList composed of Movie objects
  */
-public class Inventory{
+public class Inventory implements Serializable{
     /**
-    * The movieList object, made up of movie objects 
+    * The movieList object, made up of movie objects
     */
-    ArrayList<Movie> movieList = new ArrayList<Movie>();
-
+    private ArrayList<Product> productList = new ArrayList<Product>();
     /**
     * adds Movie object to movieList
     * @param Movie object
     * @return n.a.
     */
-    public void addMovie(Movie movie) {
+    public void addProduct(int sku, Product product) {
 
-        boolean matchFound = false;
-        
-        for(Movie currMovie : movieList){
-            if(currMovie.getSku() == movie.getSku()){
-                matchFound = true;
-                currMovie.increaseQuantityBy(movie.getQuantity());
-                break;
-            }
+        int productIndex = getIndexBySKU(sku);
+
+        if (productIndex!=-1) {
+            System.out.println("non-unique SKU");
         }
-
-        if(!matchFound) {
-            movieList.add(movie);
+        else {
+            productList.add(product);
         }
     }
+
     /**
     * removes movie by SKU
     * @param int SKU
     * @return n.a.
     */
-    public void removeMovieBySku(int sku) {
-       
-        boolean skuFound = false;
+    public void removeProductBySku(int sku) {
 
-        for(Movie currMovie : movieList) {        
+        int productIndex = getindexBySKU(sku);
+
+        for(Movie currMovie : movieList) {
             if(currMovie.getSku() == sku) {
                 skuFound = true;
                 currMovie.removeMovie();
-                
+
                 if(currMovie.getQuantity() <= 0) {
                     movieList.remove(currMovie);
                 }
                 System.out.println ("Removed movie with sku: " + sku);
-            } 
+            }
         }
-        
-        if(!skuFound) {
+
+        if(productIndex == -1) {
             System.out.println("No movie found with this sku.");
-        } 
+        }
     }
     /**
     * Finds SKU and calls member function to displays the movie by SKU
     * @param int SKU
     * @return n.a.
     */
-    public void displayMovieBySku(int sku) {
-        
+    public void displayProductBySku(int sku) {
+
         boolean skuFound = false;
 
         for(Movie currMovie : movieList) {
             if(currMovie.getSku() == sku) {
                 skuFound = true;
-                currMovie.displayMovie(); 
+                currMovie.displayMovie();
                 break;
             }
         }
@@ -86,7 +81,7 @@ public class Inventory{
     * @param n.a.
     * @return n.a.
     */
-    public void displayInventory() {
+    public void displayProduct() {
         System.out.println();
         System.out.printf("%-10s", "sku");
         System.out.printf("%-8s", "quant");
@@ -97,5 +92,18 @@ public class Inventory{
 
         for (int i = 0; i < movieList.size(); i++)
             movieList.get(i).displayLine();
+    }
+    /**
+    * Searches for the SKU in the list and returns the index if found
+    * return -1 when not found
+    *
+    */
+    private int getIndexBySKU (int SKUValue) {
+        for (int i = 0; i < inventory.size(); i++) {
+            if (inventory.get(i).getSKU() == SKUValue()
+                return i;
+            }
+            return -1;
+        }
     }
 }
