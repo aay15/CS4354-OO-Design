@@ -78,7 +78,6 @@ abstract public class Product implements Comparable<Product>, Serializable {
             System.out.println("Only " + quantity + " in inventory.");
             return false;
         }
-
     }
     
     /**

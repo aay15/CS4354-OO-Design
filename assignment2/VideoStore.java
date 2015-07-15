@@ -13,7 +13,6 @@ import java.io.*;
 public class VideoStore {
 
     static Scanner sc = new Scanner(System.in);
-<<<<<<< HEAD
 
     /**
     * The inventory object
@@ -21,14 +20,8 @@ public class VideoStore {
     private Inventory storeInventory = new Inventory();
 
     public static void main(String[] args) {
-=======
     
-    private Inventory storeInventory = new Inventory();
-
-    public static void main(String[] args) {
-        
         VideoStore store = new VideoStore();
->>>>>>> 4cde5cd9a6fe5b396facac8593297bcbb8ce50d8
 
         /**
         * Reads in the Serialized Inventory from input file
@@ -124,14 +117,8 @@ public class VideoStore {
     }
 
     /**
-<<<<<<< HEAD
     * Reads in Product information and creates Product object
     * @param char choice (M, B, or T)
-    * @return void
-=======
-    * Reads in Movie information and creates movie object
-    * @return the Movie object created
->>>>>>> 4cde5cd9a6fe5b396facac8593297bcbb8ce50d8
     */
     private void createProduct(char choice) {
 
